@@ -1,0 +1,50 @@
+$search-placeholder: #90A0B7;
+$main-title: #1D262C;
+$crimson: #F3477A;
+$white: #fff;
+$black: #000;
+$grey: #F2F2F2;
+$purple: #884CB2;
+$line-sep: #E0E0E0;
+
+
+$list-item-mark-active: linear-gradient(133.9deg, rgba(243, 71, 122, 0.7) 0.24%, rgba(136, 76, 178, 0.7) 95.04%);
+$list-item-mark-active-bg: linear-gradient(133.9deg, rgba(243, 71, 122, 0.2) 0.24%, rgba(136, 76, 178, 0.2) 95.04%);
+
+$list-item-mark-completed: linear-gradient(133.9deg, rgba(243, 71, 122, 0.7) 0.24%, rgba(136, 76, 178, 0.7) 95.04%);
+$list-item-mark-completed-bg: linear-gradient(133.9deg, rgba(243, 71, 122, 0.2) 0.24%, rgba(136, 76, 178, 0.2) 95.04%);
+
+$status-list: (
+    inprogress:#56ccf2,
+    pending:#f2994a,
+    completed: #27ae60,
+    cancelled:#eb5757,
+);
+
+$priority-list: (
+    minor: #219653,
+    normal: #F2C94C,
+    critical: #EB5757
+);
+
+@mixin position-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin object-circle($size) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+}
+
+@mixin blocker($opacity, $index) {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    opacity: $opacity;
+    z-index: $index;
+}

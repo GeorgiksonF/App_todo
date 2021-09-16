@@ -1,0 +1,44 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "isCompleted": true,
+      "text": "Evaluate the addition and deletion of user IDs.",
+      "status": "Pending",
+      "priority": "Minor",
+      "isViewed": false
+    },
+    {
+      "id": "2",
+      "isCompleted": true,
+      "text": "Identify the implementation team.",
+      "status": "In Progress",
+      "priority": "Normal",
+      "isViewed": false
+    },
+    {
+      "id": "4",
+      "isCompleted": false,
+      "text": "Monitor system performance and adjust hardware.",
+      "status": "Pending",
+      "priority": "Minor",
+      "isViewed": false
+    },
+    {
+      "id": "5",
+      "isCompleted": false,
+      "text": "Install console machines and prerequisite software.",
+      "status": "Completed",
+      "priority": "Critical",
+      "isViewed": false
+    },
+    {
+      "id": "5fc49184-d723-4ebe-bc87-b32167fde47d",
+      "isCompleted": false,
+      "text": "New task digdes",
+      "status": "In Progress",
+      "priority": "Normal",
+      "isViewed": false
+    }
+  ]
+}
