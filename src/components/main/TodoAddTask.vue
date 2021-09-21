@@ -30,7 +30,6 @@
 
 <script>
     import { uuidv4 } from '/src/helpers'
-    import { mapActions } from 'vuex'
 
     export default {
         data() {
@@ -41,8 +40,11 @@
                     text: '',
                     status: '',
                     priority: '',
-                    isViewed: false
-                }
+                    comments: {},
+                    performer: '1',
+                    creator: '2',
+                    restInvolved: ['3', '4', '5']
+                },
             }
         },
         props: {
@@ -52,8 +54,7 @@
             onCreateTodo() {
                 this.closeAddTodo()
                 this.$store.dispatch('createTodo', this.newTodo) 
-            },
-            ...mapActions(['createTodo'])
+            }
         }
     }
 </script>
@@ -63,7 +64,7 @@
 
         &__blocker {
             background: rgba($black, 0.5);
-            @include blocker(1, 6);
+            @include blocker(1);
         }
 
         &__section {

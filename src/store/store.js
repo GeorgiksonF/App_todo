@@ -1,15 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import todo from './todo'
+import comments from './comments'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        hello: 'hello'
+        isFetching: false
     },
     modules: {
-        todo
+        todo,
+        comments
     }
 })
 

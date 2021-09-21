@@ -4,8 +4,9 @@
         <div class="todo-item__menu" @click="toggleMenu">
             <transition name="fade">
                 <ul class="todo-item__menu-list" v-if="isShownMenu">
-                    <li @click="onCompleteTodo">Выполнить</li>
-                    <li>Добавить комментарий</li>
+                    <li v-if="!isCompleted" @click="onCompleteTodo">Выполнить</li>
+                    <li v-if="!isCompleted">Добавить комментарий</li>
+                    <li v-if="isCompleted">Восстановить</li>
                     <li @click="onRemoveTodo">Удалить</li>
                 </ul>
             </transition>
@@ -14,11 +15,12 @@
 </template>
 
 <script>
-    import { mapMutations, mapActions, mapGetters } from 'vuex'
+    import { mapGetters } from 'vuex'
 
     export default {
         props: {
-            'itemId': String
+            'itemId': String,
+            'isCompleted': Boolean
         },
         data() {
             return {
@@ -41,8 +43,6 @@
             onRemoveTodo() {
                 this.$store.dispatch('removeTodo', this.itemId)
             },
-            ...mapMutations(['removeTodo']),
-            ...mapActions(['completeTodo', 'removeTodo'])
         },
     }
 </script>

@@ -4,7 +4,7 @@
       <Header/>
       <div class="content-wrap">
         <Main/>
-        <Sidebar/>
+        <Comments/>
       </div>
     </div>
   </div>
@@ -13,7 +13,7 @@
 <script>
   import store from './store/store'
   import Header from './components/header/Header'
-  import Sidebar from './components/Sidebar'
+  import Comments from './components/comments/Comments'
   import Main from './components/main/Main'
   import './scss/main.scss'
 
@@ -23,7 +23,7 @@
     components: {
       Header,
       Main,
-      Sidebar
+      Comments
     }
   }
 </script>

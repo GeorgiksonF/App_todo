@@ -22,3 +22,14 @@ export const todoApi = {
                 .then(res => res)
     }
 }
+
+export const commentsApi = {
+    getCommentsList(itemId) {
+        return instance.get(`/comments?taskId=${itemId}`)
+                .then(res => res)
+    },
+    getUsersInfo() {
+        return instance.get(`/users`)
+                .then(res => res)
+    }
+}

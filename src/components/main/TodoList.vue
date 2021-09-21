@@ -8,12 +8,12 @@
             <Todo 
                 v-for="todo in todos" 
                 :key="todo.id"
-                :isActive="todo.isCompleted"
+                :isCompleted="todo.isCompleted"
+                :isSelected="todo.isSelected"
                 :text="todo.text"
                 :status="todo.status"
                 :priority="todo.priority"
                 :itemId="todo.id"
-                :class="{'todo-item--completed': todo.isCompleted}"
             />
         </div>
     </div>

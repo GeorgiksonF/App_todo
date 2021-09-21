@@ -1,12 +1,15 @@
 <template>
-    <div class="todo-item">
+    <div 
+        :class="['todo-item', {'todo-item--selected': isSelected, 'todo-item--completed': isCompleted}]" 
+        @click="onSelectTodo"
+    >
         <div class="todo-item__text-wrap">
             <div class="todo-item__mark" ></div>
             <p class="todo-item__text">{{text}}</p>
         </div>
         <TodoStatus :status="status"/>
         <TodoPriority :priority="priority"/>
-        <TodoMenu :itemId="itemId"/>
+        <TodoMenu :itemId="itemId" :isCompleted="isCompleted"/>
     </div>
 </template>
 
@@ -18,11 +21,11 @@
     export default {
         data() {
             return {
-                
             }
         },
         props: {
-            'isActive': Boolean,
+            'isCompleted': Boolean,
+            'isSelected': Boolean,
             'text': String,
             'status': String,
             'priority': String,
@@ -33,6 +36,12 @@
             TodoPriority,
             TodoMenu,
         },
+        methods: {
+            onSelectTodo() {
+                this.$store.commit('selectTodo', this.itemId)
+                this.$store.dispatch('getComments', this.itemId)
+            }
+        }
     }
 </script>
 
@@ -41,19 +50,30 @@
         display: flex;
         align-items: center;
         padding: 21px 0;
+        cursor: pointer;
 
         &:not(:last-child) {
             border-bottom: 1px solid $line-sep;
         }
 
-        &--completed {
-            opacity: 0.3;
+        &--completed &__text-wrap,
+        &--completed &__status-wrap,
+        &--completed &__priority-wrap {
+            opacity: .3;
+        }
+
+        &--selected {
+            box-shadow: 1px 1px 8px rgba($black, 0.3);
+            position: relative;
+            z-index: 10;
+            transition: .4s;
         }
 
         &__text-wrap {
             display: flex;
             align-items: center;
             flex: 2;
+            margin-left: 6px;
         }
 
         &__mark {
@@ -134,7 +154,7 @@
             position: absolute;
             right: 0px;
             top: 28px;
-            z-index: 5;
+            z-index: 20;
             background: $white;
             box-shadow: 2px 2px 8px rgba($black, 0.3);
             border-radius: 5px;
@@ -167,7 +187,7 @@
         }
 
         &__menu-close {
-            @include blocker(0, 4);
+            @include blocker(0);
         }
     }
 </style>

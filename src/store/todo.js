@@ -2,7 +2,7 @@ import { todoApi } from '../api/api'
 
 const todo = {
     state: () => ({
-        todoList: []
+        todoList: [],
     }),
     getters: {
         getActiveTodo(state) {
@@ -13,7 +13,7 @@ const todo = {
         },
         getCompletedTodo(state) {
             return state.todoList.filter(todo => todo.isCompleted)
-        }
+        },
     },
     mutations: {
         fillTodoList(state, todoList) {
@@ -27,6 +27,20 @@ const todo = {
         },
         removeTodo(state, data) {
             state.todoList = [...state.todoList.filter(todo => todo.id !== data.id)]
+        },
+        selectTodo(state, itemId) {
+            state.todoList = state.todoList.map(todo => {
+                if (todo.id === itemId) {
+                    return {
+                        ...todo,
+                        isSelected: true
+                    }
+                }
+                return {
+                    ...todo,
+                    isSelected: false
+                }
+            })
         }
     },
     actions: {
@@ -65,7 +79,7 @@ const todo = {
                         id: itemId
                     })
                 })
-        } 
+        },
     }
 }
 

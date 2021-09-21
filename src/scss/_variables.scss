@@ -11,9 +11,6 @@ $line-sep: #E0E0E0;
 $list-item-mark-active: linear-gradient(133.9deg, rgba(243, 71, 122, 0.7) 0.24%, rgba(136, 76, 178, 0.7) 95.04%);
 $list-item-mark-active-bg: linear-gradient(133.9deg, rgba(243, 71, 122, 0.2) 0.24%, rgba(136, 76, 178, 0.2) 95.04%);
 
-$list-item-mark-completed: linear-gradient(133.9deg, rgba(243, 71, 122, 0.7) 0.24%, rgba(136, 76, 178, 0.7) 95.04%);
-$list-item-mark-completed-bg: linear-gradient(133.9deg, rgba(243, 71, 122, 0.2) 0.24%, rgba(136, 76, 178, 0.2) 95.04%);
-
 $status-list: (
     inprogress:#56ccf2,
     pending:#f2994a,
@@ -34,17 +31,18 @@ $priority-list: (
 }
 
 @mixin object-circle($size) {
-    width: $size;
-    height: $size;
+    min-width: $size;
+    min-height: $size;
     border-radius: 50%;
 }
 
-@mixin blocker($opacity, $index) {
+@mixin blocker($opacity) {
     position: fixed;
     width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
     opacity: $opacity;
-    z-index: $index;
+    z-index: 12;
+    cursor: default;
 }

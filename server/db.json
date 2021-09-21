@@ -1,44 +1,168 @@
 {
   "todos": [
     {
-      "id": "1",
-      "isCompleted": true,
-      "text": "Evaluate the addition and deletion of user IDs.",
-      "status": "Pending",
-      "priority": "Minor",
-      "isViewed": false
-    },
-    {
-      "id": "2",
-      "isCompleted": true,
+      "id": "57db2f83-1ab0-4b08-ba57-d572f9778c28",
+      "isCompleted": false,
       "text": "Identify the implementation team.",
       "status": "In Progress",
       "priority": "Normal",
-      "isViewed": false
+      "performer": "1",
+      "creator": "2",
+      "restInvolved": [
+        "3",
+        "4",
+        "5"
+      ]
     },
     {
-      "id": "4",
+      "id": "dc1a988b-421b-4a16-a602-da54cbcf3856",
+      "isCompleted": false,
+      "text": "Batch schedule download/process.",
+      "status": "Pending",
+      "priority": "Critical",
+      "performer": "1",
+      "creator": "2",
+      "restInvolved": [
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "32103cbe-303f-45af-9770-0ca8025ce859",
       "isCompleted": false,
       "text": "Monitor system performance and adjust hardware.",
       "status": "Pending",
       "priority": "Minor",
-      "isViewed": false
+      "performer": "1",
+      "creator": "2",
+      "restInvolved": [
+        "3",
+        "4",
+        "5"
+      ]
     },
     {
-      "id": "5",
-      "isCompleted": false,
+      "id": "245147c1-f167-4565-b336-b3ed143b881c",
+      "isCompleted": true,
       "text": "Install console machines and prerequisite software.",
       "status": "Completed",
       "priority": "Critical",
-      "isViewed": false
+      "performer": "1",
+      "creator": "2",
+      "restInvolved": [
+        "3",
+        "4",
+        "5"
+      ],
+      "isSelected": false
     },
     {
-      "id": "5fc49184-d723-4ebe-bc87-b32167fde47d",
-      "isCompleted": false,
-      "text": "New task digdes",
-      "status": "In Progress",
-      "priority": "Normal",
-      "isViewed": false
+      "id": "d975f5e0-394b-4c87-b86b-d12052cef37a",
+      "isCompleted": true,
+      "text": "Design a relatively simple business system",
+      "status": "Pending",
+      "priority": "Critical",
+      "performer": "1",
+      "creator": "2",
+      "restInvolved": [
+        "3",
+        "4",
+        "5"
+      ],
+      "isSelected": false
+    },
+    {
+      "id": "29cdb1fd-5dba-4ac1-8ae1-e8aff4ad42f1",
+      "isCompleted": true,
+      "text": "Define users and workflow",
+      "status": "Cancelled",
+      "priority": "Minor",
+      "performer": "1",
+      "creator": "2",
+      "restInvolved": [
+        "3",
+        "4",
+        "5"
+      ],
+      "isSelected": false
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "firstName": "Gerorge",
+      "secondName": "",
+      "lastName": "Falyan",
+      "avatar": "",
+      "createdTasks": [],
+      "performedTasks": []
+    },
+    {
+      "id": "2",
+      "firstName": "Ivan",
+      "secondName": "",
+      "lastName": "Ivanov",
+      "avatar": "",
+      "createdTasks": [],
+      "performedTasks": []
+    },
+    {
+      "id": "3",
+      "firstName": "Sergey",
+      "secondName": "",
+      "lastName": "Sergeev",
+      "avatar": "",
+      "createdTasks": [],
+      "performedTasks": []
+    },
+    {
+      "id": "4",
+      "firstName": "Dmitriy",
+      "secondName": "",
+      "lastName": "Petrov",
+      "avatar": "",
+      "createdTasks": [],
+      "performedTasks": []
+    },
+    {
+      "id": "5",
+      "firstName": "Elena",
+      "secondName": "",
+      "lastName": "Sidorova",
+      "avatar": "",
+      "createdTasks": [],
+      "performedTasks": []
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "taskId": "57db2f83-1ab0-4b08-ba57-d572f9778c28",
+      "userId": "1",
+      "text": "Planning for new event at Sydney room for new project on 14:00 PM",
+      "time": ""
+    },
+    {
+      "id": "2",
+      "taskId": "57db2f83-1ab0-4b08-ba57-d572f9778c28",
+      "userId": "2",
+      "text": "Planning for new event at Sydney room for new project on 14:00 PM",
+      "time": ""
+    },
+    {
+      "id": "3",
+      "taskId": "57db2f83-1ab0-4b08-ba57-d572f9778c28",
+      "userId": "1",
+      "text": "Planning for new event at Sydney room for new project on 14:00 PM",
+      "time": ""
+    },
+    {
+      "id": "4",
+      "taskId": "57db2f83-1ab0-4b08-ba57-d572f9778c28",
+      "userId": "3",
+      "text": "Planning for new event at Sydney room for new project on 14:00 PM",
+      "time": ""
     }
   ]
 }
