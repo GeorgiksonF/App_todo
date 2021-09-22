@@ -25,6 +25,9 @@ const todo = {
         completeTodo(state, data) {
             state.todoList.find(todo => todo.id === data.id).isCompleted = true;
         },
+        restoreTodo(state, data) {
+            state.todoList.find(todo => todo.id === data.id).isCompleted = false;
+        },
         removeTodo(state, data) {
             state.todoList = [...state.todoList.filter(todo => todo.id !== data.id)]
         },
@@ -67,6 +70,15 @@ const todo = {
                 .then(() => {
                     commit({
                         type: 'completeTodo',
+                        id: todo.id
+                    })
+                })
+        },
+        restoreTodo({commit}, todo) {
+            todoApi.restoreTodo(todo)
+                .then(() => {
+                    commit({
+                        type: 'restoreTodo',
                         id: todo.id
                     })
                 })

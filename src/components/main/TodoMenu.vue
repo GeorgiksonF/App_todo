@@ -6,7 +6,7 @@
                 <ul class="todo-item__menu-list" v-if="isShownMenu">
                     <li v-if="!isCompleted" @click="onCompleteTodo">Выполнить</li>
                     <li v-if="!isCompleted">Добавить комментарий</li>
-                    <li v-if="isCompleted">Восстановить</li>
+                    <li v-if="isCompleted" @click="onRestoreTodo">Восстановить</li>
                     <li @click="onRemoveTodo">Удалить</li>
                 </ul>
             </transition>
@@ -39,6 +39,9 @@
             },
             onCompleteTodo() {
                 this.$store.dispatch('completeTodo', this.getCertainTodo(this.itemId))
+            },
+            onRestoreTodo() {
+                this.$store.dispatch('restoreTodo', this.getCertainTodo(this.itemId))
             },
             onRemoveTodo() {
                 this.$store.dispatch('removeTodo', this.itemId)

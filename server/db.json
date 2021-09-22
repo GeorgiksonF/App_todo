@@ -44,7 +44,7 @@
     },
     {
       "id": "245147c1-f167-4565-b336-b3ed143b881c",
-      "isCompleted": true,
+      "isCompleted": false,
       "text": "Install console machines and prerequisite software.",
       "status": "Completed",
       "priority": "Critical",
@@ -55,7 +55,7 @@
         "4",
         "5"
       ],
-      "isSelected": false
+      "isSelected": true
     },
     {
       "id": "d975f5e0-394b-4c87-b86b-d12052cef37a",

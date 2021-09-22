@@ -17,6 +17,10 @@ export const todoApi = {
         return instance.put(`/todos/${todo.id}`, {...todo, "isCompleted": true}, {"Content-Type": "application/json"})
                 .then(res => res)
     },
+    restoreTodo(todo) {
+        return instance.put(`/todos/${todo.id}`, {...todo, "isCompleted": false}, {"Content-Type": "application/json"})
+                .then(res => res)
+    },
     removeTodo(itemId) {
         return instance.delete(`/todos/${itemId}`)
                 .then(res => res)
