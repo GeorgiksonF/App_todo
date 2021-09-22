@@ -9,7 +9,7 @@
         </div>
         <TodoAddTask v-if="isShownAddTodo" :closeAddTodo="closeAddTodo"/>
         <TodoSection v-if="todoList.length !== 0"/>
-        <div class="main__no-todo" v-else>Нет задач</div>
+        <TodoNotices />
     </div>
 </template>
 
@@ -17,6 +17,7 @@
     import { mapState, mapGetters } from 'vuex';
     import TodoSection from './TodoSection'
     import TodoAddTask from './TodoAddTask'
+    import TodoNotices from './TodoNotices'
 
     export default {
         data() {
@@ -26,7 +27,8 @@
         },
         components: {
             TodoSection,
-            TodoAddTask
+            TodoAddTask,
+            TodoNotices
         },
         computed: {
             ...mapState({

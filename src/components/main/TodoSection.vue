@@ -1,11 +1,11 @@
 <template>
     <div class="todo">
         <TodoList 
-            :todos="getActiveTodo"
+            :todos="activeTodo"
             title="On Hold"
         />
         <TodoList 
-            :todos="getCompletedTodo"
+            :todos="completedTodo"
             title="Completed"
         />
     </div>
@@ -17,10 +17,27 @@
 
     export default {
         computed: {
+            activeTodo() {
+                if (this.getSearchText !== '') {
+                    return this.getSearchTodosActive
+                }
+
+                return this.getActiveTodo
+            },
+            completedTodo() {
+                if (this.getSearchText !== '') {
+                    return this.getSearchTodosCompleted
+                }
+
+                return this.getCompletedTodo
+            },
             ...mapGetters([
+                'getSearchText',
+                'getSearchTodosActive',
+                'getSearchTodosCompleted',
                 'getActiveTodo',
                 'getCompletedTodo'
-            ]),
+                ])
         },
         components: {
             TodoList,

@@ -1,19 +1,30 @@
 <template>
     <div class="search">
         <img src="~@/assets/svg/search.svg" class="search__icon" alt="search" aria-placeholder="">
-        <input type="text" class="search__input" v-model="text" :placeholder="palceholder">
+        <input 
+            type="text" 
+            class="search__input" 
+            v-model="searchText" 
+            :placeholder="palceholder"
+            @input="onSearchTodo"    
+        >
     </div>
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            text: '',
-            palceholder: 'Search for any training you want'
+    export default {
+        data() {
+            return {
+                searchText: '',
+                palceholder: 'Search for any training you want'
+            }
+        },
+        methods: {
+            onSearchTodo() {
+                this.$store.dispatch('getSearchTodos', this.searchText)
+            }
         }
-    },
-}
+    }
 </script>
 
 <style lang="scss">

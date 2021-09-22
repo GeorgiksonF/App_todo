@@ -37,3 +37,10 @@ export const commentsApi = {
                 .then(res => res)
     }
 }
+
+export const searchApi = {
+    getSearchTodos(searchText) {
+        return instance.get(`/todos?text_like=${searchText}`)
+                .then(res => res)
+    }
+}

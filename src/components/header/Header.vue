@@ -14,7 +14,6 @@ import Search from './Search'
 export default {
     data() {
         return {
-            header: 'Header',
         }
     },
     components: {
