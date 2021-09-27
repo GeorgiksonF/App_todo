@@ -5,8 +5,13 @@ $white: #fff;
 $black: #000;
 $grey: #F2F2F2;
 $purple: #884CB2;
+$green: #6FCF97;
 $line-sep: #E0E0E0;
-
+$avatar-bg: #79D0DF;
+$comment-name: #24272C;
+$comment-datetime: #7D859A;
+$comment-text: #555555;
+$comment-message-bg: #F3F3F3;
 
 $list-item-mark-active: linear-gradient(133.9deg, rgba(243, 71, 122, 0.7) 0.24%, rgba(136, 76, 178, 0.7) 95.04%);
 $list-item-mark-active-bg: linear-gradient(133.9deg, rgba(243, 71, 122, 0.2) 0.24%, rgba(136, 76, 178, 0.2) 95.04%);
@@ -33,6 +38,8 @@ $priority-list: (
 @mixin object-circle($size) {
     min-width: $size;
     min-height: $size;
+    width: $size;
+    height: $size;
     border-radius: 50%;
 }
 

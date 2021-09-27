@@ -53,7 +53,7 @@
 
 <style lang="scss">
     .main {
-        flex: 8;
+        flex: 9;
 
         &__header-wrap {
             display: flex;

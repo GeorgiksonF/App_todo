@@ -40,6 +40,7 @@
             border: none;
             outline: none;
             min-width: 200px;
+
             &::placeholder {
                 color: $search-placeholder;
                 font-size: 12px;

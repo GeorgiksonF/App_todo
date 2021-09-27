@@ -14,6 +14,9 @@ const todo = {
         getCompletedTodo(state) {
             return state.todoList.filter(todo => todo.isCompleted)
         },
+        getSelectedTodo(state) {
+            return state.todoList.find(todo => todo.isSelected ? todo.id : null)
+        }
     },
     mutations: {
         fillTodoList(state, todoList) {
@@ -66,6 +69,7 @@ const todo = {
                 })
         },
         completeTodo({commit}, todo) {
+            delete todo.isSelected
             todoApi.completeTodo(todo)
                 .then(() => {
                     commit({
@@ -75,6 +79,7 @@ const todo = {
                 })
         },
         restoreTodo({commit}, todo) {
+            delete todo.isSelected
             todoApi.restoreTodo(todo)
                 .then(() => {
                     commit({

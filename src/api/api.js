@@ -34,6 +34,9 @@ export const commentsApi = {
     },
     getUsersInfo() {
         return instance.get(`/users`)
+                .then(res => res)    },
+    createComment(comment) {
+        return instance.post('/comments', comment, {"Content-Type": "application/json"})
                 .then(res => res)
     }
 }

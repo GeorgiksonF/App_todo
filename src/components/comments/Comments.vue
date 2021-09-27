@@ -8,6 +8,7 @@
             :userId="comment.userId"
             :text="comment.text"
             :time="comment.time"
+            :message="comment.message"
         />
     </div>
 </template>
@@ -33,6 +34,7 @@
 
 <style lang="scss">
     .sidebar {
+        margin-top: 5px;
         flex: 3;
     }
 </style>

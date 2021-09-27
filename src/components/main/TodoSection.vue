@@ -48,7 +48,6 @@
 <style lang="scss">
     .todo {
         margin-top: 40px;
-        margin-right: 20px;
         
         &__list {
             &:not(:first-child) {

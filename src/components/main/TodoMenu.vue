@@ -5,17 +5,19 @@
             <transition name="fade">
                 <ul class="todo-item__menu-list" v-if="isShownMenu">
                     <li v-if="!isCompleted" @click="onCompleteTodo">Выполнить</li>
-                    <li v-if="!isCompleted">Добавить комментарий</li>
+                    <li v-if="!isCompleted" @click="shownAddComment">Добавить комментарий</li>
                     <li v-if="isCompleted" @click="onRestoreTodo">Восстановить</li>
                     <li @click="onRemoveTodo">Удалить</li>
                 </ul>
             </transition>
         </div>
+        <TodoAddComment v-if="isShownAddComment" :closeAddComment="closeAddComment"/>
     </div>
 </template>
 
 <script>
     import { mapGetters } from 'vuex'
+    import TodoAddComment from './TodoAddComment'
 
     export default {
         props: {
@@ -25,10 +27,14 @@
         data() {
             return {
                 isShownMenu: false,
+                isShownAddComment: false
             }
         },
         computed: {
             ...mapGetters(['getCertainTodo'])
+        },
+        components: {
+            TodoAddComment,
         },
         methods: {
             toggleMenu() {
@@ -45,6 +51,12 @@
             },
             onRemoveTodo() {
                 this.$store.dispatch('removeTodo', this.itemId)
+            },
+            shownAddComment() {
+                this.isShownAddComment = true
+            },
+            closeAddComment() {
+                this.isShownAddComment = false
             },
         },
     }

@@ -2,7 +2,6 @@
     <div class="header">
         <Search/>
         <div class="header-end">
-            <div>Bell</div>
             <div>Profile</div>
         </div>
     </div>

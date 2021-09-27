@@ -14,6 +14,7 @@
                 :status="todo.status"
                 :priority="todo.priority"
                 :itemId="todo.id"
+                :participants="todo.participants"
             />
         </div>
     </div>

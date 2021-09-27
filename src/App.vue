@@ -3,8 +3,8 @@
     <div class="container">
       <Header/>
       <div class="content-wrap">
-        <Main/>
-        <Comments/>
+        <Main class="content-wrap__item"/>
+        <Comments class="content-wrap__item"/>
       </div>
     </div>
   </div>
@@ -32,5 +32,11 @@
   .content-wrap {
     display: flex;
     margin-top: 60px;
+
+    &__item {
+      &:first-child {
+        margin-right: 40px;
+      }
+    }
   }
 </style>

@@ -9,6 +9,7 @@
         </div>
         <TodoStatus :status="status"/>
         <TodoPriority :priority="priority"/>
+        <TodoParticipants :participants="participants"/>
         <TodoMenu :itemId="itemId" :isCompleted="isCompleted"/>
     </div>
 </template>
@@ -17,6 +18,7 @@
     import TodoStatus from './TodoStatus'
     import TodoPriority from './TodoPriority'
     import TodoMenu from './TodoMenu'
+    import TodoParticipants from './TodoParticipants'
 
     export default {
         data() {
@@ -29,12 +31,14 @@
             'text': String,
             'status': String,
             'priority': String,
-            'itemId': String
+            'itemId': String,
+            'participants': Object
         },
         components: {
             TodoStatus,
             TodoPriority,
             TodoMenu,
+            TodoParticipants
         },
         methods: {
             onSelectTodo() {
@@ -58,7 +62,8 @@
 
         &--completed &__text-wrap,
         &--completed &__status-wrap,
-        &--completed &__priority-wrap {
+        &--completed &__priority-wrap,
+        &--completed .participants {
             opacity: .3;
         }
 
@@ -72,7 +77,7 @@
         &__text-wrap {
             display: flex;
             align-items: center;
-            flex: 2;
+            flex: 3;
             margin-left: 6px;
         }
 

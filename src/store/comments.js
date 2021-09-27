@@ -19,6 +19,9 @@ const comments = {
         },
         fillUsersInfo(state, usersList) {
             state.users = [...usersList.users]
+        },
+        addComment(state, data) {
+            state.comments = [...state.comments, data.comment]
         }
     },
     actions: {
@@ -40,6 +43,15 @@ const comments = {
                     })
                 })
         },
+        createComment({commit}, comment) {
+            commentsApi.createComment(comment)
+                .then(() => {
+                    commit({
+                        type: 'addComment',
+                        comment
+                    })
+                })
+        }
     }
 }
 
