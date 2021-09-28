@@ -26,13 +26,13 @@
             }
         },
         props: {
-            'isCompleted': Boolean,
-            'isSelected': Boolean,
-            'text': String,
-            'status': String,
-            'priority': String,
-            'itemId': String,
-            'participants': Object
+            isCompleted: Boolean,
+            isSelected: Boolean,
+            text: String,
+            status: String,
+            priority: String,
+            itemId: String,
+            participants: Object
         },
         components: {
             TodoStatus,

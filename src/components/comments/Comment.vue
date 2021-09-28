@@ -30,12 +30,12 @@
 
     export default {
         props: {
-            'id': String,
-            'taskId': String,
-            'userId': String,
-            'text': String,
-            'time': String,
-            'message': String   
+            id: String,
+            taskId: String,
+            userId: String,
+            text: String,
+            time: String,
+            message: String   
         },
         computed: {
             getUserInfo() {

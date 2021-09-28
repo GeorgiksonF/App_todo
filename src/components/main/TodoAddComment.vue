@@ -1,14 +1,15 @@
 <template>
-    <div class="comment-form">
-        <div class="comment-form__blocker" @click="closeAddComment"></div>
-        <div class="comment-form__section">
-            <form action="" class="comment-form__form">
-                <div class="comment-form__item comment-form__item--text">
-                    <label for="comment-text">Комментарий</label>
-                    <textarea type="text" id="comment-text" v-model="newComment.message"></textarea>
-                </div>
-                <input type="button" value="Отправить" class="comment-form__item comment-form__item--send" @click="onSendComment">
-            </form>
+    <div class="modal">
+        <div class="modal__blocker" @click.self="closeAddComment">
+            <div class="modal__section">
+                <form action="" class="form">
+                    <div class="form__item">
+                        <label class="form__label" for="comment-text">Comment</label>
+                        <textarea class="form__textarea" type="text" id="comment-text" v-model="newComment.message"></textarea>
+                    </div>
+                    <input type="button" value="Send" class="form__btn" @click="onSendComment">
+                </form>
+            </div>
         </div>
     </div>
 </template>
@@ -22,12 +23,12 @@
         data() {
             return {
                 newComment: {
-                    id: uuidv4(),
+                    id: null,
                     taskId: '',
-                    userId: '1',
+                    userId: '',
                     text: '',
                     message: '',
-                    time: dayjs().toISOString()
+                    time: null
                 }
             }
         },
@@ -40,30 +41,12 @@
         methods: {
             onSendComment() {
                 this.closeAddComment()
+                this.newComment.id = uuidv4()
                 this.newComment.taskId = this.getSelectedTodo.id
+                this.newComment.time = dayjs().toISOString()
+                this.newComment.userId = '1' // hardcode userId
                 this.$store.dispatch('createComment', this.newComment) 
             }
         }
     }
 </script>
-
-<style lang="scss">
-    .comment-form {
-        &__blocker {
-            background: rgba($black, 0.5);
-            @include blocker(1);
-        }
-
-        &__section {
-            position: fixed;
-            padding: 20px;
-            top: 36%;
-            left: 36%;
-            background: $white;
-            border-radius: 7px;
-            box-shadow: 1px 1px 10px rgba($black, 0.4);
-            z-index: 15;
-        }
-
-    }
-</style>

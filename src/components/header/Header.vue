@@ -11,10 +11,6 @@
 import Search from './Search'
 
 export default {
-    data() {
-        return {
-        }
-    },
     components: {
         Search,
     }

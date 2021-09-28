@@ -7,7 +7,7 @@
 <script>
     export default {
         props: {
-            'avatarUrl': String,
+            avatarUrl: String,
         }   
     }
 </script>

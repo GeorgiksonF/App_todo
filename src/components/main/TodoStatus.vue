@@ -9,7 +9,7 @@
 <script>
     export default {
         props: {
-            'status': String,
+            status: String,
         },
         computed: {
             getStatus() {

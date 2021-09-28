@@ -12,32 +12,34 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
     import { uuidv4 } from '/src/helpers'
     import TodoParticipantsItem from './TodoParticipantsItem'
-
+    import {mapGetters} from 'vuex'
+    
     export default {
         props: {
-            'participants': Object
+            participants: Object
         },
         computed: {
             getUsers() {
-                return [
+                let participants = [
                     this.participants.performer,
                     this.participants.creator,
                     ...this.participants.restInvolved
-                ].map(user => {
-                    return {
-                        ...this.getCertainUser(user),
-                        key: uuidv4()
-                    }
-                })
+                ]
+
+                return participants
+                        .filter((userId, index) => participants.indexOf(userId) === index)
+                        .map(userId => ({
+                                ...this.getCertainUser(userId),
+                                key: uuidv4()
+                            }))
             },
-            ...mapGetters(['getCertainUser'])        
+            ...mapGetters(['getCertainUser'])    
         },
         components: {
             TodoParticipantsItem
-        }
+        },
     }
 </script>
 

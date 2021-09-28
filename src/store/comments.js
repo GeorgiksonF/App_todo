@@ -3,7 +3,7 @@ import { commentsApi } from '../api/api'
 const comments = {
     state: () => ({
         comments: [],
-        users: []
+        users: [],
     }),
     getters: {
         getComments(state) {

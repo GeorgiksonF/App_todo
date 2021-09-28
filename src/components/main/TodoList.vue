@@ -25,8 +25,8 @@
 
     export default {
         props: {
-            'todos': Array,
-            'title': String
+            todos: Array,
+            title: String
         },
         components: {
             Todo

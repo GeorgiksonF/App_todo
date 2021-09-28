@@ -1,0 +1,74 @@
+.modal {
+    &__blocker {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba($black, 0.5);
+        @include blocker(1);
+    }
+
+    &__section {
+        padding: 20px;
+        background: $white;
+        border-radius: 7px;
+        box-shadow: 1px 1px 10px rgba($black, 0.4);
+        z-index: 35;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    
+    &__item {
+        display: flex;
+        flex-direction: column;
+        min-width: 600px;
+
+        &:not(:first-child) {
+            margin-top: 20px;
+        }
+    }
+
+    &__label {
+        margin-bottom: 8px;
+        margin-left: 6px;
+    }
+
+    &__input,
+    &__select,
+    &__textarea {
+        outline: none;
+        font-family: 'Poppins', sans-serif;
+        flex: 1;
+        padding: 5px 20px;
+        border-radius: 3px;
+        border: 1px solid $main-title;
+    }
+    
+    &__option {
+        padding: 10px;
+    }
+    
+    &__textarea {
+        padding: 14px;
+        resize: none;
+    }
+
+    &__btn {
+        margin-top: 30px;
+        align-self: flex-start;
+        padding: 8px 50px;
+        border-radius: 3px;
+        border: 1px solid $main-title;
+        background: $main-title;
+        color: $white;
+        font-family: 'Motserrat', sans-serif;
+        font-size: 14px;
+        
+        &:active {
+            background: rgba($main-title, 0.8);
+            transition: .5s;
+        }
+    }
+}

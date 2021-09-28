@@ -71,7 +71,7 @@
       "priority": "Critical",
       "participants": {
         "performer": "1",
-        "creator": "2",
+        "creator": "1",
         "restInvolved": [
           "3",
           "4",
@@ -88,11 +88,7 @@
       "participants": {
         "performer": "1",
         "creator": "2",
-        "restInvolved": [
-          "3",
-          "4",
-          "5"
-        ]
+        "restInvolved": []
       }
     }
   ],

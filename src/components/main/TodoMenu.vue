@@ -21,8 +21,8 @@
 
     export default {
         props: {
-            'itemId': String,
-            'isCompleted': Boolean
+            itemId: String,
+            isCompleted: Boolean
         },
         data() {
             return {
