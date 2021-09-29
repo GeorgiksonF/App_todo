@@ -13,6 +13,8 @@ $comment-datetime: #7D859A;
 $comment-text: #555555;
 $comment-message-bg: #F3F3F3;
 
+$profile-avatar-border: conic-gradient(from 180deg at 50% 50%, #FD648E 0deg, #884CB2 178.12deg, #FD648E 360deg);
+$users-avatar-border: conic-gradient(from 180deg at 50% 50%, #3A91C1 0deg, #40C6D5 178.12deg, #3A91C1 360deg);
 $list-item-mark-active: linear-gradient(133.9deg, rgba(243, 71, 122, 0.7) 0.24%, rgba(136, 76, 178, 0.7) 95.04%);
 $list-item-mark-active-bg: linear-gradient(133.9deg, rgba(243, 71, 122, 0.2) 0.24%, rgba(136, 76, 178, 0.2) 95.04%);
 
@@ -40,7 +42,7 @@ $priority-list: (
     min-height: $size;
     width: $size;
     height: $size;
-    border-radius: 50%;
+    border-radius: 50px;
 }
 
 @mixin blocker($opacity) {

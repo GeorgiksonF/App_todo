@@ -76,21 +76,25 @@
 
         &__avatar {
             display: flex;
-            flex: 1;
             margin-right: 25px;
+            background: $users-avatar-border;
+            @include object-circle(38px);
+            @include position-center;
         }
 
         &__img-wrap {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            @include object-circle(38px);
-            background: $avatar-bg;
+            position: relative;
+            @include object-circle(34px);
+            overflow: hidden;
         }
 
         &__img {
+            position: absolute;
+            object-fit: cover;
             @include object-circle(33px);
             border: 1px solid $white;
+            top: 0;
+            left: 0;
         }
 
         &__content {
