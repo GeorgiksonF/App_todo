@@ -1,17 +1,19 @@
 <template>
-    <div 
-        :class="['todo-item', {'todo-item--selected': isSelected, 'todo-item--completed': isCompleted}]" 
-        @click="onSelectTodo"
-    >
-        <div class="todo-item__text-wrap">
-            <div class="todo-item__mark" ></div>
-            <p class="todo-item__text">{{text}}</p>
+    <router-link :to='commentUrl'>
+        <div 
+            :class="['todo-item', {'todo-item--selected': isSelected, 'todo-item--completed': isCompleted}]" 
+            @click="onSelectTodo"
+        >
+            <div class="todo-item__text-wrap">
+                <div class="todo-item__mark" ></div>
+                <p class="todo-item__text">{{text}}</p>
+            </div>
+            <TodoStatus :status="status"/>
+            <TodoPriority :priority="priority"/>
+            <TodoParticipants :participants="participants"/>
+            <TodoMenu :itemId="itemId" :isCompleted="isCompleted"/>
         </div>
-        <TodoStatus :status="status"/>
-        <TodoPriority :priority="priority"/>
-        <TodoParticipants :participants="participants"/>
-        <TodoMenu :itemId="itemId" :isCompleted="isCompleted"/>
-    </div>
+    </router-link>
 </template>
 
 <script>
@@ -44,6 +46,11 @@
             onSelectTodo() {
                 this.$store.commit('selectTodo', this.itemId)
                 this.$store.dispatch('getComments', this.itemId)
+            }
+        },
+        computed: {
+            commentUrl() {
+                return `/comments/task=${this.itemId}`
             }
         }
     }

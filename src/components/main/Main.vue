@@ -47,6 +47,7 @@
         created() {
             this.$store.dispatch('getTodos');
             this.$store.dispatch('getUsers');
+            this.$router.push('/')
         }
     }
 </script>
