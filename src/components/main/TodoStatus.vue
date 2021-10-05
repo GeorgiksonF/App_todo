@@ -13,7 +13,8 @@
         },
         computed: {
             getStatus() {
-                return this.status.toLowerCase().split('').filter((el) => el !== ' ').join('')
+                return this.status.toLowerCase().split('')
+                            .filter((el) => el !== ' ').join('')
             },
         }
     }

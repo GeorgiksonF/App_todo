@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
     export default {
         data() {
             return {
@@ -21,8 +22,9 @@
         },
         methods: {
             onSearchTodo() {
-                this.$store.dispatch('getSearchTodos', this.searchText)
-            }
+                this.getSearchTodos(this.searchText)
+            },
+            ...mapActions(['getSearchTodos'])
         }
     }
 </script>

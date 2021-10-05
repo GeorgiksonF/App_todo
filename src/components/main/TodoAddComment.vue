@@ -27,7 +27,7 @@
 
 <script>
     import { uuidv4 } from '/src/helpers'
-    import {mapGetters} from 'vuex'
+    import {mapActions, mapGetters} from 'vuex'
     import dayjs from 'dayjs'
 
     export default {
@@ -37,7 +37,7 @@
                     id: null,
                     taskId: '',
                     userId: '',
-                    text: '',
+                    description: 'Comment on your task',
                     message: '',
                     time: null
                 },
@@ -58,7 +58,7 @@
                     this.newComment.taskId = this.getSelectedTodo.id
                     this.newComment.time = dayjs().toISOString()
                     this.newComment.userId = '1' // hardcode userId
-                    this.$store.dispatch('createComment', this.newComment) 
+                    this.createComment(this.newComment) 
                 }
             },
             checkForm() {
@@ -70,7 +70,8 @@
                 } 
                 
                 return true
-            }
+            },
+            ...mapActions(['createComment'])
         }
     }
 </script>

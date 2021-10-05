@@ -14,7 +14,7 @@
                 <h1 class="comment__full-name">{{getFullName}}</h1>
                 <span class="comment__date-time">{{getDateTime}}</span>
             </div>
-            <p class="comment__text">{{text}}</p>
+            <p class="comment__text">{{description}}</p>
             <div class="comment__message" v-if="message">
                 <p>{{message}}</p>
             </div>
@@ -33,7 +33,7 @@
             id: String,
             taskId: String,
             userId: String,
-            text: String,
+            description: String,
             time: String,
             message: String   
         },

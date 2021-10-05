@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapActions, mapGetters } from 'vuex'
     import TodoAddComment from './TodoAddComment'
 
     export default {
@@ -44,13 +44,13 @@
                 this.isShownMenu = false;
             },
             onCompleteTodo() {
-                this.$store.dispatch('completeTodo', this.getCertainTodo(this.itemId))
+                this.completeTodo(this.getCertainTodo(this.itemId))
             },
             onRestoreTodo() {
-                this.$store.dispatch('restoreTodo', this.getCertainTodo(this.itemId))
+                this.restoreTodo(this.getCertainTodo(this.itemId))
             },
             onRemoveTodo() {
-                this.$store.dispatch('removeTodo', this.itemId)
+                this.removeTodo(this.itemId)
             },
             shownAddComment() {
                 this.isShownAddComment = true
@@ -58,6 +58,7 @@
             closeAddComment() {
                 this.isShownAddComment = false
             },
+            ...mapActions(['completeTodo', 'restoreTodo', 'removeTodo'])
         },
     }
 </script>

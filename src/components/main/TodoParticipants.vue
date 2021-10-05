@@ -1,10 +1,12 @@
 <template>
     <div class="participants">
-        <TodoParticipantsItem 
+        <div 
+            class="participants__item"
             v-for="user in getUsers.slice(0, 4)"
             :key="user.key"
-            :avatarUrl="user.avatarUrl"
-        />
+        >
+            <img :src="user.avatarUrl" alt="avatar" class="participants__img">
+        </div>
         <div class="participants__item" v-if="getUsers.length > 4">
             <div class="participants__over">+{{getUsers.length - 4}}</div>
         </div>
@@ -13,8 +15,7 @@
 
 <script>
     import { uuidv4 } from '/src/helpers'
-    import TodoParticipantsItem from './TodoParticipantsItem'
-    import {mapGetters} from 'vuex'
+    import { mapGetters } from 'vuex'
     
     export default {
         props: {
@@ -36,10 +37,7 @@
                             }))
             },
             ...mapGetters(['getCertainUser'])    
-        },
-        components: {
-            TodoParticipantsItem
-        },
+        }
     }
 </script>
 

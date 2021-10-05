@@ -153,21 +153,21 @@
       "id": "1",
       "taskId": "57db2f83-1ab0-4b08-ba57-d572f9778c28",
       "userId": "1",
-      "text": "Planning for new event at Sydney room for new project on 14:00 PM",
+      "description": "Planning for new event at Sydney room for new project on 14:00 PM",
       "time": "2021-09-21T13:30:42"
     },
     {
       "id": "2",
       "taskId": "57db2f83-1ab0-4b08-ba57-d572f9778c28",
       "userId": "2",
-      "text": "Attached new design file to Userflow",
+      "description": "Attached new design file to Userflow",
       "time": "2021-09-22T14:30:42"
     },
     {
       "id": "3",
       "taskId": "57db2f83-1ab0-4b08-ba57-d572f9778c28",
       "userId": "1",
-      "text": "Comment on your task UI Design",
+      "description": "Comment on your task UI Design",
       "message": "Amazing! Great work. Keep it up, bro",
       "time": "2021-09-23T13:30:42"
     },
@@ -175,7 +175,7 @@
       "id": "4",
       "taskId": "57db2f83-1ab0-4b08-ba57-d572f9778c28",
       "userId": "3",
-      "text": "Planning for new event at Sydney room for new project on 14:00 PM",
+      "description": "Planning for new event at Sydney room for new project on 14:00 PM",
       "time": "2021-09-23T15:05:11"
     }
   ]

@@ -6,7 +6,7 @@
             :id="comment.id"
             :taskId="comment.taskId"
             :userId="comment.userId"
-            :text="comment.text"
+            :description="comment.description"
             :time="comment.time"
             :message="comment.message"
         />
