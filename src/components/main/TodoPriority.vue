@@ -1,7 +1,7 @@
 <template>
-    <div class="todo-item__priority-wrap">
-        <div class="todo-item__priority">
-            <div :class="[`todo-item__priority-mark`, `todo-item__priority-mark--${priority.toLowerCase()}`]"></div>
+    <div class="priority">
+        <div class="priority__wrap">
+            <div :class="[`priority__mark`, `priority__mark--${priority.toLowerCase()}`]"></div>
             <span>{{priority}}</span>
         </div>
     </div>
@@ -14,3 +14,34 @@
         },
     }
 </script>
+
+<style lang="scss">
+    .priority {
+        flex: 1;
+
+        &__wrap {
+            display: flex;
+            align-items: center;
+            font-size: 11px;
+        }
+
+        &__mark {
+            @include position-center;
+            @include object-circle(8px);
+            margin-right: 5px;
+
+            @each $priority, $color in $priority-list {
+                &--#{$priority} {
+                    background: $color;
+                }
+            }
+
+            &::after {
+                content: "";
+                @include object-circle(4px);
+                border-radius: 50%;
+                background: $white;
+            }
+        }
+    }
+</style>
