@@ -27,7 +27,7 @@
                     this.participants.creator,
                     ...this.participants.restInvolved
                 ]
-
+                
                 return participants
                         .filter((userId, index) => participants.indexOf(userId) === index)
                         .map(userId => ({

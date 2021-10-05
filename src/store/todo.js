@@ -2,6 +2,7 @@ import { todoApi } from '../api/api'
 
 const todo = {
     state: () => ({
+        isFetching: false,
         todoList: [],
     }),
     getters: {
@@ -16,6 +17,9 @@ const todo = {
         },
         getSelectedTodo(state) {
             return state.todoList.find(todo => todo.isSelected ? todo.id : null)
+        },
+        getIsFetching(state) {
+            return state.isFetching
         }
     },
     mutations: {
@@ -24,6 +28,7 @@ const todo = {
         },
         createTodo(state, data) {
             state.todoList = [...state.todoList, data.todo]
+            console.log(state.todoList)
         },
         completeTodo(state, data) {
             state.todoList.find(todo => todo.id === data.id).isCompleted = true;
@@ -47,6 +52,14 @@ const todo = {
                     isSelected: false
                 }
             })
+        },
+        setIsFetching(state) {
+            state.isFetching = true
+            console.log(state.isFetching)
+        },
+        unsetIsFetching(state) {
+            state.isFetching = false
+            console.log(state.isFetching)
         }
     },
     actions: {

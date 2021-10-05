@@ -2,7 +2,18 @@
     <div class="modal">
         <div class="modal__blocker" @click.self="closeAddTodo">
             <div class="modal__section">
-                <form action="" class="form">
+                <form action="" class="form" @submit="checkForm" method="post">
+                    <div v-if="errors.length" class="errors">
+                        <ul class="errors__list">
+                            <li 
+                                v-for="(error, key) in errors" 
+                                :key="key"
+                                class="errors__item"
+                            >
+                                {{ error }}
+                            </li>
+                        </ul>
+                    </div>
                     <div class="form__item">
                         <label class="form__label" for="todo-text">Todo text</label>
                         <input class="form__input" type="text" id="todo-text" v-model="newTodo.text">
@@ -32,6 +43,7 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex'
     import { uuidv4 } from '/src/helpers'
 
     export default {
@@ -43,11 +55,13 @@
                     text: '',
                     status: '',
                     priority: '',
-                    comments: {},
-                    performer: '',
-                    creator: '',
-                    restInvolved: ['']
+                    participants: {
+                        performer: '',
+                        creator: '',
+                        restInvolved: []
+                    }
                 },
+                errors: []
             }
         },
         props: {
@@ -55,13 +69,35 @@
         },
         methods: {
             onCreateTodo() {
-                this.closeAddTodo()
-                this.newTodo.id = uuidv4()
-                this.newTodo.performer = '2'
-                this.newTodo.creator = '1'
-                this.newTodo.restInvolved = ['3', '4', '5']
-                this.$store.dispatch('createTodo', this.newTodo) 
-            }
+                if (this.checkForm()) {
+                    this.closeAddTodo()
+                    this.newTodo.id = uuidv4()
+                    this.newTodo.participants = {
+                        performer: '2',
+                        creator: '1',
+                        restInvolved: ['3', '4']
+                    }
+                    this.createTodo(this.newTodo) 
+                }
+            },
+            checkForm() {
+                this.errors = [];
+
+                if (this.newTodo.text.trim() === '') {
+                    this.errors.push('Please input some text')
+                }
+
+                if (!this.newTodo.status || !this.newTodo.priority) {
+                    this.errors.push('Please fill status/priority')
+                }
+
+                if (this.errors.length) {
+                    return false
+                }
+                
+                return true
+            },
+            ...mapActions(['createTodo'])
         }
     }
 </script>

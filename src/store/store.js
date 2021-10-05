@@ -7,13 +7,18 @@ import search from './search'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-    state: {
-        isFetching: false
-    },
     modules: {
         todo,
         comments,
         search
+    },
+    actions: {
+        fetchData({dispatch}) {
+            return dispatch('getTodos')
+                .then(() => {
+                    dispatch('getUsers')
+                })
+        }
     }
 })
 

@@ -2,6 +2,17 @@
     <div class="modal">
         <div class="modal__blocker" @click.self="closeAddComment">
             <div class="modal__section">
+                <div v-if="errors.length" class="errors">
+                    <ul class="errors__list">
+                        <li 
+                            v-for="(error, key) in errors" 
+                            :key="key"
+                            class="errors__item"
+                        >
+                            {{ error }}
+                        </li>
+                    </ul>
+                </div>
                 <form action="" class="form">
                     <div class="form__item">
                         <label class="form__label" for="comment-text">Comment</label>
@@ -29,7 +40,8 @@
                     text: '',
                     message: '',
                     time: null
-                }
+                },
+                errors: []
             }
         },
         props: {
@@ -40,12 +52,24 @@
         },
         methods: {
             onSendComment() {
-                this.closeAddComment()
-                this.newComment.id = uuidv4()
-                this.newComment.taskId = this.getSelectedTodo.id
-                this.newComment.time = dayjs().toISOString()
-                this.newComment.userId = '1' // hardcode userId
-                this.$store.dispatch('createComment', this.newComment) 
+                if (this.checkForm()) {
+                    this.closeAddComment()
+                    this.newComment.id = uuidv4()
+                    this.newComment.taskId = this.getSelectedTodo.id
+                    this.newComment.time = dayjs().toISOString()
+                    this.newComment.userId = '1' // hardcode userId
+                    this.$store.dispatch('createComment', this.newComment) 
+                }
+            },
+            checkForm() {
+                this.errors = []
+
+                if (this.newComment.message === '') {
+                    this.errors.push('You can\'t send empty message!')
+                    return false
+                } 
+                
+                return true
             }
         }
     }

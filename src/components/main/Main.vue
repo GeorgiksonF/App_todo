@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import { mapState, mapGetters } from 'vuex';
+    import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
     import TodoSection from './TodoSection'
     import TodoAddTask from './TodoAddTask'
     import TodoNotices from './TodoNotices'
@@ -22,7 +22,7 @@
     export default {
         data() {
             return {
-                isShownAddTodo: false,
+                isShownAddTodo: false
             }
         },
         components: {
@@ -32,7 +32,7 @@
         },
         computed: {
             ...mapState({
-                todoList: state => state.todo.todoList
+                todoList: state => state.todo.todoList,
             }),
             ...mapGetters(['getActiveTodo']),
         },
@@ -43,11 +43,14 @@
             closeAddTodo() {
                 this.isShownAddTodo = false
             },
+            ...mapMutations(['setIsFetching', 'unsetIsFetching']),
+            ...mapActions(['fetchData'])
         },
         created() {
-            this.$store.dispatch('getTodos');
-            this.$store.dispatch('getUsers');
-            this.$router.push('/')
+            this.fetchData()
+                .then(() => {
+                    this.unsetIsFetching()
+                })
         }
     }
 </script>

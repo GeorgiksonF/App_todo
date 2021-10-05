@@ -11,7 +11,7 @@ const comments = {
         },
         getCertainUser: state => userId => {
             return state.users.find(user => user.id === userId)
-        }
+        },
     },
     mutations: {
         fillCommentsList(state, commentsList) {
@@ -22,7 +22,7 @@ const comments = {
         },
         addComment(state, data) {
             state.comments = [...state.comments, data.comment]
-        }
+        },
     },
     actions: {
         getComments({commit}, itemId) {
@@ -36,12 +36,12 @@ const comments = {
         },
         getUsers({commit}) {
             commentsApi.getUsersInfo()
-                .then(res => {
-                    commit({
-                        type: 'fillUsersInfo',
-                        users: res.data
-                    })
+            .then(res => {
+                commit({
+                    type: 'fillUsersInfo',
+                    users: res.data
                 })
+            })
         },
         createComment({commit}, comment) {
             commentsApi.createComment(comment)

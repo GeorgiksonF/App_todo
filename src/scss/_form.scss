@@ -41,11 +41,15 @@
         outline: none;
         font-family: 'Poppins', sans-serif;
         flex: 1;
-        padding: 5px 20px;
+        padding: 5px 20px 5px 10px;
         border-radius: 3px;
         border: 1px solid $main-title;
     }
     
+    &__select {
+        background-position: left, top, 50px;
+    }
+
     &__option {
         padding: 10px;
     }
@@ -69,6 +73,21 @@
         &:active {
             background: rgba($main-title, 0.8);
             transition: .5s;
+        }
+    }
+}
+
+.errors {
+    color: $form-error;
+    margin-left: 4px;
+
+    &__list {
+        margin-bottom: 15px;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 12px;
         }
     }
 }
