@@ -9,6 +9,14 @@ export const todoApi = {
         return instance.get('/todos')
                 .then(res => res)
     },
+    getTodoListActive() {
+        return instance.get('/todos?isCompleted=false&_page=1&_limit=10')
+                .then(res => res)
+    },
+    getTodoListCompleted() {
+        return instance.get('/todos?isCompleted=true&_page=1&_limit=10')
+                .then(res => res)
+    },
     createTodo(todo) {
         return instance.post('/todos', todo, {"Content-Type": "application/json"})
                 .then(res => res)

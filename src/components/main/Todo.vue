@@ -1,8 +1,13 @@
 <template>
-    <router-link :to='commentUrl'>
+    <router-link 
+        :to='commentUrl'
+        custom
+        v-slot="{ isActive, navigate }"
+        @click="onSelectTodo"
+    >
         <div 
-            :class="['todo-item', {'todo-item--selected': isSelected, 'todo-item--completed': isCompleted}]" 
-            @click="onSelectTodo"
+            :class="['todo-item', {'todo-item--selected': isActive, 'todo-item--completed': isCompleted}]" 
+            @click="navigate"
         >
             <TodoTask :text="text"/>
             <TodoStatus :status="status"/>
@@ -19,7 +24,7 @@
     import TodoPriority from './TodoPriority'
     import TodoMenu from './TodoMenu'
     import TodoParticipants from './TodoParticipants'
-    import { mapActions, mapMutations } from 'vuex'
+    import { mapActions } from 'vuex'
 
     export default {
         data() {
@@ -44,10 +49,8 @@
         },
         methods: {
             onSelectTodo() {
-                this.selectTodo(this.itemId)
                 this.getComments(this.itemId)
             },
-            ...mapMutations(['selectTodo']),
             ...mapActions(['getComments'])
         },
         computed: {

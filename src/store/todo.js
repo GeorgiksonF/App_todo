@@ -39,20 +39,6 @@ const todo = {
         removeTodo(state, data) {
             state.todoList = [...state.todoList.filter(todo => todo.id !== data.id)]
         },
-        selectTodo(state, itemId) {
-            state.todoList = state.todoList.map(todo => {
-                if (todo.id === itemId) {
-                    return {
-                        ...todo,
-                        isSelected: true
-                    }
-                }
-                return {
-                    ...todo,
-                    isSelected: false
-                }
-            })
-        },
         setIsFetching(state) {
             state.isFetching = true
             console.log(state.isFetching)
