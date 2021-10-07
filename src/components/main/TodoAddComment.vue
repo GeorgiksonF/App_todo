@@ -64,7 +64,7 @@
             checkForm() {
                 this.errors = []
 
-                if (this.newComment.message === '') {
+                if (this.newComment.message.trim() === '') {
                     this.errors.push('You can\'t send empty message!')
                     return false
                 } 
