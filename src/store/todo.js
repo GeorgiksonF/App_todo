@@ -5,7 +5,8 @@ const todo = {
         isFetching: false,
         todoList: [],
         todoActivePagesCount: null,
-        todoCompletedPagesCount: null
+        todoCompletedPagesCount: null,
+        selectedTodoId: null
     }),
     getters: {
         getActiveTodo(state) {
@@ -17,8 +18,8 @@ const todo = {
         getCompletedTodo(state) {
             return state.todoList.filter(todo => todo.isCompleted)
         },
-        getSelectedTodo(state) {
-            return state.todoList.find(todo => todo.isSelected ? todo.id : null)
+        getSelectedTodoId(state) {
+            return state.selectedTodoId
         },
         getIsFetching(state) {
             return state.isFetching
@@ -62,6 +63,9 @@ const todo = {
         unsetIsFetching(state) {
             state.isFetching = false
             console.log(state.isFetching)
+        },
+        setSelectedTodoId(state, id) {
+            state.selectedTodoId = id
         }
     },
     actions: {

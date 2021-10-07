@@ -25,7 +25,7 @@
     import TodoPriority from './TodoPriority'
     import TodoMenu from './TodoMenu'
     import TodoParticipants from './TodoParticipants'
-    import { mapActions } from 'vuex'
+    import { mapActions, mapMutations } from 'vuex'
 
     export default {
         data() {
@@ -51,8 +51,10 @@
         methods: {
             onTodoClick() {
                 this.getComments(this.itemId)
+                this.setSelectedTodoId(this.itemId)
             },
-            ...mapActions(['getComments'])
+            ...mapActions(['getComments']),
+            ...mapMutations(['setSelectedTodoId'])
         },
         computed: {
             commentUrl() {

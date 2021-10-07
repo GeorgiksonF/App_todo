@@ -48,14 +48,14 @@
             'closeAddComment': Function
         },
         computed: {
-            ...mapGetters(['getSelectedTodo'])
+            ...mapGetters(['getSelectedTodoId'])
         },
         methods: {
             onSendComment() {
                 if (this.checkForm()) {
                     this.closeAddComment()
                     this.newComment.id = uuidv4()
-                    this.newComment.taskId = this.getSelectedTodo.id
+                    this.newComment.taskId = this.getSelectedTodoId
                     this.newComment.time = dayjs().toISOString()
                     this.newComment.userId = '1' // hardcode userId
                     this.createComment(this.newComment) 
