@@ -3,17 +3,18 @@
         :to='commentUrl'
         custom
         v-slot="{ isActive, navigate }"
-        @click="onSelectTodo"
     >
         <div 
             :class="['todo-item', {'todo-item--selected': isActive, 'todo-item--completed': isCompleted}]" 
             @click="navigate"
         >
-            <TodoTask :text="text"/>
-            <TodoStatus :status="status"/>
-            <TodoPriority :priority="priority"/>
-            <TodoParticipants :participants="participants"/>
-            <TodoMenu :itemId="itemId" :isCompleted="isCompleted"/>
+            <div class="todo-item__wrap" @click="onTodoClick">
+                <TodoTask :text="text"/>
+                <TodoStatus :status="status"/>
+                <TodoPriority :priority="priority"/>
+                <TodoParticipants :participants="participants"/>
+                <TodoMenu :itemId="itemId" :isCompleted="isCompleted"/>
+            </div>
         </div>
     </router-link>
 </template>
@@ -48,7 +49,7 @@
             TodoParticipants
         },
         methods: {
-            onSelectTodo() {
+            onTodoClick() {
                 this.getComments(this.itemId)
             },
             ...mapActions(['getComments'])
@@ -63,11 +64,7 @@
 
 <style lang="scss">
     .todo-item {
-        display: flex;
-        align-items: center;
-        padding: 21px 0;
-        cursor: pointer;
-
+        
         &:not(:last-child) {
             border-bottom: 1px solid $line-sep;
         }
@@ -84,6 +81,13 @@
             position: relative;
             z-index: 10;
             transition: .4s;
+        }
+
+        &__wrap {
+            display: flex;
+            align-items: center;
+            padding: 21px 0;
+            cursor: pointer;
         }
     }
 </style>

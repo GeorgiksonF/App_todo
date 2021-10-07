@@ -5,16 +5,12 @@ const instance = axios.create({
 });
 
 export const todoApi = {
-    getTodoList() {
-        return instance.get('/todos')
+    getTodosActive(page) {
+        return instance.get(`/todos?isCompleted=false&_page=${page}&_limit=10`)
                 .then(res => res)
     },
-    getTodoListActive() {
-        return instance.get('/todos?isCompleted=false&_page=1&_limit=10')
-                .then(res => res)
-    },
-    getTodoListCompleted() {
-        return instance.get('/todos?isCompleted=true&_page=1&_limit=10')
+    getTodosCompleted(page) {
+        return instance.get(`/todos?isCompleted=true&_page=${page}&_limit=10`)
                 .then(res => res)
     },
     createTodo(todo) {

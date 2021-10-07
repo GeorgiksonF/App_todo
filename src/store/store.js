@@ -14,10 +14,9 @@ const store = new Vuex.Store({
     },
     actions: {
         fetchData({dispatch}) {
-            return dispatch('getTodos')
-                .then(() => {
-                    dispatch('getUsers')
-                })
+            dispatch('getTodosActive')
+            dispatch('getTodosCompleted')
+            dispatch('getUsers')
         }
     }
 })

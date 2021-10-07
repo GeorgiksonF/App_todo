@@ -4,6 +4,8 @@ const todo = {
     state: () => ({
         isFetching: false,
         todoList: [],
+        todoActivePagesCount: null,
+        todoCompletedPagesCount: null
     }),
     getters: {
         getActiveTodo(state) {
@@ -20,15 +22,29 @@ const todo = {
         },
         getIsFetching(state) {
             return state.isFetching
+        },
+        getTodoActivePagesCount(state) {
+            return state.todoActivePagesCount
+        },
+        getTodoCompletedpagesCount(state) {
+            return state.todoCompletedPagesCount
         }
     },
     mutations: {
-        fillTodoList(state, todoList) {
-            state.todoList = [...todoList.todos]
+        setTodosPagesCount(state, data) {
+            if (data.status === 'active') {
+                state.todoActivePagesCount = Math.ceil(data.totalCount / 10)
+            } 
+            
+            if (data.status === 'completed') {
+                state.todoCompletedPagesCount = Math.ceil(data.totalCount / 10)
+            }
+        },
+        fillTodoList(state, data) {
+            state.todoList = [...state.todoList, ...data.todos]
         },
         createTodo(state, data) {
             state.todoList = [...state.todoList, data.todo]
-            console.log(state.todoList)
         },
         completeTodo(state, data) {
             state.todoList.find(todo => todo.id === data.id).isCompleted = true;
@@ -49,12 +65,31 @@ const todo = {
         }
     },
     actions: {
-        getTodos({commit}) {
-            todoApi.getTodoList()
+        getTodosActive({commit}, page = 1) {
+            todoApi.getTodosActive(page)
                 .then(res => {
                     commit({
                         type: 'fillTodoList',
-                        todos: res.data
+                        todos: res.data,
+                    })
+                    commit({
+                        type: 'setTodosPagesCount',
+                        status: 'active',
+                        totalCount: +res.headers['x-total-count']
+                    })
+                })
+            },
+            getTodosCompleted({commit}, page = 1) {
+                todoApi.getTodosCompleted(page)
+                .then(res => {
+                    commit({
+                        type: 'fillTodoList',
+                        todos: res.data,
+                    })
+                    commit({
+                        type: 'setTodosPagesCount',
+                        status: 'completed',
+                        totalCount: +res.headers['x-total-count']
                     })
                 })
         },
@@ -68,7 +103,6 @@ const todo = {
                 })
         },
         completeTodo({commit}, todo) {
-            delete todo.isSelected
             todoApi.completeTodo(todo)
                 .then(() => {
                     commit({
@@ -78,7 +112,6 @@ const todo = {
                 })
         },
         restoreTodo({commit}, todo) {
-            delete todo.isSelected
             todoApi.restoreTodo(todo)
                 .then(() => {
                     commit({
