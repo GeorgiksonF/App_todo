@@ -2,10 +2,7 @@
   <div id="app">
     <div class="container">
       <Header/>
-      <div class="loader" v-if="getIsFetching">
-        <img src="~@/assets/img/rhombus.gif" class="loader__img" alt="loader">
-      </div>
-      <div class="content-wrap" v-else>
+      <div class="content-wrap">
         <Main class="content-wrap__item"/>
         <Comments class="content-wrap__item"/>
       </div>
@@ -18,7 +15,6 @@
   import Header from './components/header/Header'
   import Comments from './components/comments/Comments'
   import Main from './components/main/Main'
-  import { mapGetters } from 'vuex'
   import './scss/main.scss'
   
 
@@ -29,9 +25,6 @@
       Header,
       Main,
       Comments
-    },
-    computed: {
-      ...mapGetters(['getIsFetching'])
     }
   }
 </script>
@@ -45,16 +38,6 @@
       &:first-child {
         margin-right: 40px;
       }
-    }
-  }
-
-  .loader {
-    display: flex;
-    justify-content: center;
-    margin-top: 200px;
-
-    &__img {
-      width: 50px;
     }
   }
 </style>

@@ -10,7 +10,7 @@
         >
             <div class="todo-item__wrap" @click="onTodoClick">
                 <TodoTask :text="text"/>
-                <TodoStatus :status="status"/>
+                <TodoStatus :status="status" :itemId="itemId" :isCompleted="isCompleted"/>
                 <TodoPriority :priority="priority"/>
                 <TodoParticipants :participants="participants"/>
                 <TodoMenu :itemId="itemId" :isCompleted="isCompleted"/>
@@ -28,10 +28,6 @@
     import { mapActions, mapMutations } from 'vuex'
 
     export default {
-        data() {
-            return {
-            }
-        },
         props: {
             isCompleted: Boolean,
             isSelected: Boolean,
@@ -50,7 +46,7 @@
         },
         methods: {
             onTodoClick() {
-                this.getComments(this.itemId)
+                this.getComments({id: this.itemId, page: 1})
                 this.setSelectedTodoId(this.itemId)
             },
             ...mapActions(['getComments']),
@@ -60,7 +56,7 @@
             commentUrl() {
                 return `/comments/task=${this.itemId}`
             }
-        }
+        },
     }
 </script>
 

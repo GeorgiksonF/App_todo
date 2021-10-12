@@ -14,9 +14,11 @@ const store = new Vuex.Store({
     },
     actions: {
         fetchData({dispatch}) {
-            dispatch('getTodosActive')
-            dispatch('getTodosCompleted')
-            dispatch('getUsers')
+            return Promise.all([
+                dispatch('getTodosActive'),
+                dispatch('getTodosCompleted'),
+                dispatch('getUsers')
+            ]).catch(res => res)
         }
     }
 })

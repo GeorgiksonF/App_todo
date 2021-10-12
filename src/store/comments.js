@@ -4,18 +4,26 @@ const comments = {
     state: () => ({
         comments: [],
         users: [],
+        commentsCount: null
     }),
     getters: {
-        getComments(state) {
+        getCommentsList(state) {
             return state.comments
         },
         getCertainUser: state => userId => {
             return state.users.find(user => user.id === userId)
         },
+        getCommentsCount(state) {
+            return state.commentsCount
+        }
     },
     mutations: {
-        fillCommentsList(state, commentsList) {
-            state.comments = [...commentsList.comments]
+        fillCommentsList(state, data) {
+            if (data.page === 1) {
+                return state.comments = [...data.commentsList]
+            }
+            
+            return state.comments = [...state.comments, ...data.commentsList]
         },
         fillUsersInfo(state, usersList) {
             state.users = [...usersList.users]
@@ -23,19 +31,27 @@ const comments = {
         addComment(state, data) {
             state.comments = [...state.comments, data.comment]
         },
+        setCommentsCount(state, data) {
+            state.commentsCount = data.totalCount
+        }
     },
     actions: {
-        getComments({commit}, itemId) {
-            commentsApi.getCommentsList(itemId)
+        getComments({commit}, params) {
+            return commentsApi.getCommentsList(params.id, params.page)
                 .then(res => {
                     commit({
                         type: 'fillCommentsList',
-                        comments: res.data
+                        commentsList: [...res.data],
+                        page: params.page
+                    })
+                    commit({
+                        type: 'setCommentsCount',
+                        totalCount: +res.headers['x-total-count']
                     })
                 })
         },
         getUsers({commit}) {
-            commentsApi.getUsersInfo()
+            return commentsApi.getUsersInfo()
             .then(res => {
                 commit({
                     type: 'fillUsersInfo',

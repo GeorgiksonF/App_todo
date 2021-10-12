@@ -2,11 +2,16 @@ import { todoApi } from '../api/api'
 
 const todo = {
     state: () => ({
-        isFetching: false,
         todoList: [],
         todoActivePagesCount: null,
         todoCompletedPagesCount: null,
-        selectedTodoId: null
+        selectedTodoId: null,
+        statusesList: [
+            'Pending',
+            'In Progress',
+            'Completed',
+            'Cancelled'
+        ]
     }),
     getters: {
         getActiveTodo(state) {
@@ -56,21 +61,23 @@ const todo = {
         removeTodo(state, data) {
             state.todoList = [...state.todoList.filter(todo => todo.id !== data.id)]
         },
-        setIsFetching(state) {
-            state.isFetching = true
-            console.log(state.isFetching)
-        },
-        unsetIsFetching(state) {
-            state.isFetching = false
-            console.log(state.isFetching)
-        },
         setSelectedTodoId(state, id) {
             state.selectedTodoId = id
+        },
+        changeTodoStatus(state, data) {
+            let todo = state.todoList.find(todo => todo.id === data.itemId)
+            let statusIndex = state.statusesList.indexOf(todo.status)
+
+            if (statusIndex === state.statusesList.length - 1) {
+                return todo.status = state.statusesList[0]
+            } 
+
+            return todo.status = state.statusesList[++statusIndex]
         }
     },
     actions: {
         getTodosActive({commit}, page = 1) {
-            todoApi.getTodosActive(page)
+            return todoApi.getTodosActive(page)
                 .then(res => {
                     commit({
                         type: 'fillTodoList',
@@ -82,9 +89,9 @@ const todo = {
                         totalCount: +res.headers['x-total-count']
                     })
                 })
-            },
-            getTodosCompleted({commit}, page = 1) {
-                todoApi.getTodosCompleted(page)
+        },
+        getTodosCompleted({commit}, page = 1) {
+            return todoApi.getTodosCompleted(page)
                 .then(res => {
                     commit({
                         type: 'fillTodoList',
@@ -133,6 +140,13 @@ const todo = {
                     })
                 })
         },
+        updateTodoStatus({commit, getters}, itemId) {
+            commit({
+                type: 'changeTodoStatus',
+                itemId
+            })
+            todoApi.changeTodoStatus(getters.getCertainTodo(itemId))
+        }
     }
 }
 

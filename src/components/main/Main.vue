@@ -7,9 +7,14 @@
                 <span>Add New</span>
             </a>
         </div>
+        <keep-alive>
+            <div class="main__loader loader" v-if="isFetching">
+                <img src="~@/assets/img/rhombus.gif" alt="loader">
+            </div>
+        </keep-alive>
         <TodoAddTask v-if="isShownAddTodo" :closeAddTodo="closeAddTodo"/>
-        <TodoSection v-if="todoList.length !== 0"/>
-        <TodoNotices />
+        <TodoSection v-if="todoList.length !== 0 && !isFetching"/>
+        <TodoNotices v-if="!isFetching"/>
     </div>
 </template>
 
@@ -22,6 +27,7 @@
     export default {
         data() {
             return {
+                isFetching: false,
                 isShownAddTodo: false
             }
         },
@@ -47,9 +53,10 @@
             ...mapActions(['fetchData'])
         },
         created() {
+            this.isFetching = true
             this.fetchData()
                 .then(() => {
-                    this.unsetIsFetching()
+                    this.isFetching = false
                 })
         }
     }
@@ -57,6 +64,7 @@
 
 <style lang="scss">
     .main {
+        position: relative;
         flex: 9;
 
         &__header-wrap {
@@ -71,6 +79,14 @@
             margin-right: 24px;
             span { 
                 color: $crimson;
+            }
+        }
+
+        &__loader {
+            margin-top: 100px;
+
+            img {
+                width: 50px;
             }
         }
     }

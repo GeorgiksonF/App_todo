@@ -28,12 +28,15 @@ export const todoApi = {
     removeTodo(itemId) {
         return instance.delete(`/todos/${itemId}`)
                 .then(res => res)
+    },
+    changeTodoStatus(todo) {
+        return instance.put(`/todos/${todo.id}`, {...todo}, {"Content-Type": "application/json"})
     }
 }
 
 export const commentsApi = {
-    getCommentsList(itemId) {
-        return instance.get(`/comments?taskId=${itemId}`)
+    getCommentsList(itemId, page) {
+        return instance.get(`/comments?taskId=${itemId}&_page=${page}&_limit=10`)
                 .then(res => res)
     },
     getUsersInfo() {
