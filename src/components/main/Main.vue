@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="main__header-wrap">
-            <h1 class="main__title">You’ve got <span>{{getActiveTodo.length + ' task'}}</span> today</h1>
+            <h1 class="main__title">You’ve got <span>{{getTodoActiveCount + ' task'}}</span> today</h1>
             <a class="main__btn btn btn-add-todo" href="#" @click="showAddTodo">
                 <img src="~@/assets/svg/add-todo.svg" alt="add todo">
                 <span>Add New</span>
@@ -40,7 +40,7 @@
             ...mapState({
                 todoList: state => state.todo.todoList,
             }),
-            ...mapGetters(['getActiveTodo']),
+            ...mapGetters(['getActiveTodo', 'getTodoActiveCount']),
         },
         methods: {
             showAddTodo() {

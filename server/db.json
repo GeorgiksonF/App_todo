@@ -4,7 +4,7 @@
       "id": "57db2f83-1ab0-4b08-ba57-d572f9778c28",
       "isCompleted": false,
       "text": "Identify the implementation team.",
-      "status": "Completed",
+      "status": "Cancelled",
       "priority": "Normal",
       "participants": {
         "performer": "1",
@@ -37,7 +37,7 @@
       "id": "32103cbe-303f-45af-9770-0ca8025ce859",
       "isCompleted": false,
       "text": "Monitor system performance and adjust hardware.",
-      "status": "Pending",
+      "status": "In Progress",
       "priority": "Minor",
       "participants": {
         "performer": "1",
@@ -95,7 +95,7 @@
       "id": "07a56450-5a12-44d2-aba5-5758767ecf76",
       "isCompleted": false,
       "text": "asdff",
-      "status": "Completed",
+      "status": "In Progress",
       "priority": "Normal",
       "participants": {
         "performer": "2",

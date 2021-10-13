@@ -4,6 +4,7 @@ const todo = {
     state: () => ({
         todoList: [],
         todoActivePagesCount: null,
+        todoActiveCount: null,
         todoCompletedPagesCount: null,
         selectedTodoId: null,
         statusesList: [
@@ -32,6 +33,9 @@ const todo = {
         getTodoActivePagesCount(state) {
             return state.todoActivePagesCount
         },
+        getTodoActiveCount(state) {
+            return state.todoActiveCount
+        },
         getTodoCompletedpagesCount(state) {
             return state.todoCompletedPagesCount
         }
@@ -40,6 +44,7 @@ const todo = {
         setTodosPagesCount(state, data) {
             if (data.status === 'active') {
                 state.todoActivePagesCount = Math.ceil(data.totalCount / 10)
+                state.todoActiveCount = data.totalCount
             } 
             
             if (data.status === 'completed') {
