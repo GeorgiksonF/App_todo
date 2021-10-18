@@ -47,10 +47,11 @@
         methods: {
             onTodoClick() {
                 this.getComments({id: this.itemId, page: 1})
+                this.setCommentPage(1)
                 this.setSelectedTodoId(this.itemId)
             },
             ...mapActions(['getComments']),
-            ...mapMutations(['setSelectedTodoId'])
+            ...mapMutations(['setSelectedTodoId', 'setCommentPage'])
         },
         computed: {
             commentUrl() {

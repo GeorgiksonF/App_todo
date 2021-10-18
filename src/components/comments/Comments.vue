@@ -19,13 +19,12 @@
 </template>
 
 <script>
-    import {mapActions, mapGetters} from 'vuex'
+    import {mapActions, mapGetters, mapMutations} from 'vuex'
     import Comment from './Comment'
 
     export default {
         data() {
             return {
-                commentsPage: 1,
                 pageSize: 10,
                 loader: false
             }
@@ -38,24 +37,31 @@
                 if (this.getCommentsList.length) {
                     let elementIndex = this.getCommentsList.length - 1
                     const top = this.$children[elementIndex].$el.getBoundingClientRect().top
-                    if (top < 1000 && this.commentsPage < this.getPagesCount) {
+                    if (top < 1000 && this.getCommentsPage < this.getPagesCount) {
                         if (!this.loader) {
                             this.loader = true
                             this.getComments({
                                 id: this.getSelectedTodoId, 
-                                page: ++this.commentsPage
+                                page: this.getCommentsPage
                             }).finally(() => this.loader = false)
+                            this.setCommentPage()
                         }
                     }
                 }
             },
             ...mapActions(['getComments']),
+            ...mapMutations(['setCommentPage'])
         },
         computed: {
             getPagesCount() {
                 return Math.ceil(this.getCommentsCount / this.pageSize)
             },
-            ...mapGetters(['getCommentsList', 'getCommentsCount', 'getSelectedTodoId'])
+            ...mapGetters([
+                'getCommentsList',
+                'getCommentsCount',
+                'getSelectedTodoId',
+                'getCommentsPage'
+            ])
         },
         created () {
             window.addEventListener('scroll', this.onCommentScroll);
@@ -72,7 +78,7 @@
         flex: 3;
 
         &__loader {
-            margin: 30px 0;
+            margin: 30px 0 0;
 
             img {
                 width: 40px;

@@ -4,7 +4,8 @@ const comments = {
     state: () => ({
         comments: [],
         users: [],
-        commentsCount: null
+        commentsCount: null,
+        commentsPage: 1
     }),
     getters: {
         getCommentsList(state) {
@@ -15,6 +16,9 @@ const comments = {
         },
         getCommentsCount(state) {
             return state.commentsCount
+        },
+        getCommentsPage(state) {
+            return state.commentsPage
         }
     },
     mutations: {
@@ -33,6 +37,13 @@ const comments = {
         },
         setCommentsCount(state, data) {
             state.commentsCount = data.totalCount
+        },
+        setCommentPage(state, page) {
+            if (page) {
+                return state.commentsPage = page
+            }
+            
+            return state.commentsPage = ++state.commentsPage
         }
     },
     actions: {
