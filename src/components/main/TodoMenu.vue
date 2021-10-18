@@ -79,6 +79,13 @@
         cursor: pointer;
         position: relative;
         margin-right: 28px;
+
+        &:hover {
+            &:hover {
+                box-shadow: 1px 1px 4px rgba($black, 0.3);
+                transition: .3s;
+            }
+        }
         
         &__list {
             position: absolute;

@@ -12,11 +12,6 @@
 <script>
 import { mapActions } from 'vuex'
     export default {
-        data() {
-            return {
-                isChangingStatus: false
-            }
-        },
         props: {
             status: String,
             itemId: String,

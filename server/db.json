@@ -4,7 +4,7 @@
       "id": "57db2f83-1ab0-4b08-ba57-d572f9778c28",
       "isCompleted": false,
       "text": "Identify the implementation team.",
-      "status": "Cancelled",
+      "status": "Completed",
       "priority": "Normal",
       "participants": {
         "performer": "1",
@@ -38,7 +38,7 @@
       "isCompleted": false,
       "text": "Monitor system performance and adjust hardware.",
       "status": "In Progress",
-      "priority": "Minor",
+      "priority": "Critical",
       "participants": {
         "performer": "1",
         "creator": "2",

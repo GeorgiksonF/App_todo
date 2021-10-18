@@ -12,6 +12,11 @@ const todo = {
             'In Progress',
             'Completed',
             'Cancelled'
+        ],
+        priorityList: [
+            'Minor',
+            'Normal',
+            'Critical'
         ]
     }),
     getters: {
@@ -78,6 +83,16 @@ const todo = {
             } 
 
             return todo.status = state.statusesList[++statusIndex]
+        },
+        changeTodoPriority(state, data) {
+            let todo = state.todoList.find(todo => todo.id === data.itemId)
+            let priorityIndex = state.priorityList.indexOf(todo.priority)
+
+            if (priorityIndex === state.priorityList.length - 1) {
+                return todo.priority = state.priorityList[0]
+            } 
+
+            return todo.priority = state.priorityList[++priorityIndex]
         }
     },
     actions: {
@@ -150,7 +165,14 @@ const todo = {
                 type: 'changeTodoStatus',
                 itemId
             })
-            todoApi.changeTodoStatus(getters.getCertainTodo(itemId))
+            todoApi.changeTodoValues(getters.getCertainTodo(itemId))
+        },
+        updateTodoPriority({commit, getters}, itemId) {
+            commit({
+                type: 'changeTodoPriority',
+                itemId
+            })
+            todoApi.changeTodoValues(getters.getCertainTodo(itemId))
         }
     }
 }

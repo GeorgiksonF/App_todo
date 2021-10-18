@@ -11,7 +11,7 @@
             <div class="todo-item__wrap" @click="onTodoClick">
                 <TodoTask :text="text"/>
                 <TodoStatus :status="status" :itemId="itemId" :isCompleted="isCompleted"/>
-                <TodoPriority :priority="priority"/>
+                <TodoPriority :priority="priority" :itemId="itemId" :isCompleted="isCompleted"/>
                 <TodoParticipants :participants="participants"/>
                 <TodoMenu :itemId="itemId" :isCompleted="isCompleted"/>
             </div>

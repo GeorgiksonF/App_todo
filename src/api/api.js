@@ -29,9 +29,9 @@ export const todoApi = {
         return instance.delete(`/todos/${itemId}`)
                 .then(res => res)
     },
-    changeTodoStatus(todo) {
+    changeTodoValues(todo) {
         return instance.put(`/todos/${todo.id}`, {...todo}, {"Content-Type": "application/json"})
-    }
+    },
 }
 
 export const commentsApi = {
@@ -41,7 +41,8 @@ export const commentsApi = {
     },
     getUsersInfo() {
         return instance.get(`/users`)
-                .then(res => res)    },
+                .then(res => res)    
+    },
     createComment(comment) {
         return instance.post('/comments', comment, {"Content-Type": "application/json"})
                 .then(res => res)
