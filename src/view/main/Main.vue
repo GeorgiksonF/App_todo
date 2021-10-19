@@ -12,17 +12,17 @@
                 <img src="~@/assets/img/rhombus.gif" alt="loader">
             </div>
         </keep-alive>
-        <TodoAddTask v-if="isShownAddTodo" :closeAddTodo="closeAddTodo"/>
+        <AddTask v-if="isShownAddTodo" :closeAddTodo="closeAddTodo"/>
         <TodoSection v-if="todoList.length !== 0 && !isFetching"/>
-        <TodoNotices v-if="!isFetching"/>
+        <Notices v-if="!isFetching"/>
     </div>
 </template>
 
 <script>
     import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
     import TodoSection from './TodoSection'
-    import TodoAddTask from './TodoAddTask'
-    import TodoNotices from './TodoNotices'
+    import AddTask from '@/view/modals/AddTask'
+    import Notices from './Notices'
 
     export default {
         data() {
@@ -33,8 +33,8 @@
         },
         components: {
             TodoSection,
-            TodoAddTask,
-            TodoNotices
+            AddTask,
+            Notices
         },
         computed: {
             ...mapState({

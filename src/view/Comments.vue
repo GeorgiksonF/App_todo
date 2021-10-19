@@ -20,7 +20,7 @@
 
 <script>
     import {mapActions, mapGetters, mapMutations} from 'vuex'
-    import Comment from './Comment'
+    import Comment from '@/components/Comment'
 
     export default {
         data() {

@@ -9,22 +9,22 @@
             @click="navigate"
         >
             <div class="todo-item__wrap" @click="onTodoClick">
-                <TodoTask :text="text"/>
-                <TodoStatus :status="status" :itemId="itemId" :isCompleted="isCompleted"/>
-                <TodoPriority :priority="priority" :itemId="itemId" :isCompleted="isCompleted"/>
-                <TodoParticipants :participants="participants"/>
-                <TodoMenu :itemId="itemId" :isCompleted="isCompleted"/>
+                <Task :text="text"/>
+                <Status :status="status" :itemId="itemId" :isCompleted="isCompleted"/>
+                <Priority :priority="priority" :itemId="itemId" :isCompleted="isCompleted"/>
+                <Participants :participants="participants"/>
+                <Menu :itemId="itemId" :isCompleted="isCompleted"/>
             </div>
         </div>
     </router-link>
 </template>
 
 <script>
-    import TodoTask from './TodoTask'
-    import TodoStatus from './TodoStatus'
-    import TodoPriority from './TodoPriority'
-    import TodoMenu from './TodoMenu'
-    import TodoParticipants from './TodoParticipants'
+    import Task from './Task'
+    import Status from './Status'
+    import Priority from './Priority'
+    import Menu from './Menu'
+    import Participants from './Participants'
     import { mapActions, mapMutations } from 'vuex'
 
     export default {
@@ -38,11 +38,11 @@
             participants: Object
         },
         components: {
-            TodoTask,
-            TodoStatus,
-            TodoPriority,
-            TodoMenu,
-            TodoParticipants
+            Task,
+            Status,
+            Priority,
+            Menu,
+            Participants
         },
         methods: {
             onTodoClick() {

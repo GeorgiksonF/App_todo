@@ -12,9 +12,9 @@
 
 <script>
   import store from './store/store'
-  import Header from './components/header/Header'
-  import Comments from './components/comments/Comments'
-  import Main from './components/main/Main'
+  import Header from './view/header/Header'
+  import Comments from './view/Comments'
+  import Main from './view/main/Main'
   import './scss/main.scss'
   
 

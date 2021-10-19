@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Commets from '../components/comments/Comments'
+import Comments from '@/view/Comments'
 
 Vue.use(VueRouter)
 
@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/comments/task=:id',
     name: 'Comments',
-    component: Commets
+    component: Comments
   },
 ]
 

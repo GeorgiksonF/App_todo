@@ -11,13 +11,13 @@
                 </ul>
             </transition>
         </div>
-        <TodoAddComment v-if="isShownAddComment" :closeAddComment="closeAddComment"/>
+        <AddComment v-if="isShownAddComment" :closeAddComment="closeAddComment"/>
     </div>
 </template>
 
 <script>
     import { mapActions, mapGetters } from 'vuex'
-    import TodoAddComment from './TodoAddComment'
+    import AddComment from '@/view/modals/AddComment'
 
     export default {
         props: {
@@ -34,7 +34,7 @@
             ...mapGetters(['getCertainTodo'])
         },
         components: {
-            TodoAddComment,
+            AddComment,
         },
         methods: {
             toggleMenu() {
