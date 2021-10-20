@@ -26,7 +26,7 @@ const search = {
     },
     actions: {
         getSearchTodos({commit}, searchText) {
-            searchApi.getSearchTodos(searchText)
+            return searchApi.getSearchTodos(searchText)
                 .then(res => {
                     commit({
                         type: 'fillSearchTodosList',

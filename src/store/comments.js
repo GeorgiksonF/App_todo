@@ -63,15 +63,15 @@ const comments = {
         },
         getUsers({commit}) {
             return commentsApi.getUsersInfo()
-            .then(res => {
-                commit({
-                    type: 'fillUsersInfo',
-                    users: res.data
+                .then(res => {
+                    commit({
+                        type: 'fillUsersInfo',
+                        users: res.data
+                    })
                 })
-            })
         },
         createComment({commit}, comment) {
-            commentsApi.createComment(comment)
+            return commentsApi.createComment(comment)
                 .then(() => {
                     commit({
                         type: 'addComment',

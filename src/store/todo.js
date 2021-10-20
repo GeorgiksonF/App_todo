@@ -125,7 +125,7 @@ const todo = {
                 })
         },
         createTodo({commit}, todo) {
-            todoApi.createTodo(todo)
+            return todoApi.createTodo(todo)
                 .then(() => {
                     commit({
                         type: 'createTodo',
@@ -134,7 +134,7 @@ const todo = {
                 })
         },
         completeTodo({commit}, todo) {
-            todoApi.completeTodo(todo)
+            return todoApi.completeTodo(todo)
                 .then(() => {
                     commit({
                         type: 'completeTodo',
@@ -143,7 +143,7 @@ const todo = {
                 })
         },
         restoreTodo({commit}, todo) {
-            todoApi.restoreTodo(todo)
+            return todoApi.restoreTodo(todo)
                 .then(() => {
                     commit({
                         type: 'restoreTodo',
@@ -152,7 +152,7 @@ const todo = {
                 })
         },
         removeTodo({commit}, itemId) {
-            todoApi.removeTodo(itemId)
+            return todoApi.removeTodo(itemId)
                 .then(() => {
                     commit({
                         type: 'removeTodo',
@@ -165,14 +165,14 @@ const todo = {
                 type: 'changeTodoStatus',
                 itemId
             })
-            todoApi.changeTodoValues(getters.getCertainTodo(itemId))
+            return todoApi.changeTodoValues(getters.getCertainTodo(itemId))
         },
         updateTodoPriority({commit, getters}, itemId) {
             commit({
                 type: 'changeTodoPriority',
                 itemId
             })
-            todoApi.changeTodoValues(getters.getCertainTodo(itemId))
+            return todoApi.changeTodoValues(getters.getCertainTodo(itemId))
         }
     }
 }
